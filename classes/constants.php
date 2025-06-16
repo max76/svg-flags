@@ -94,7 +94,7 @@ class Constants
 
         // Don't allow tabs to be used when the plugin uses a top-level menu
         if (SVG_FLAGS_FREEMIUS_NAVIGATION === 'tabs' && $this->menu_type === 'top') {
-            wp_die('WPGO PLUGINS ERROR: Freemius doesn't support using tabs with a top-level main settings page. Please change navigation to 'menu' or use a submenu for the main settings page.');
+            wp_die("WPGO PLUGINS ERROR: Freemius doesn't support using tabs with a top-level main settings page. Please change navigation to 'menu' or use a submenu for the main settings page.");
         }
     }
 } /* End class definition */
