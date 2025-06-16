@@ -38,7 +38,7 @@ class SVG_Flag_Shortcode
     public static function get_instance()
     {
         if (!self::$instance) {
-            die('Error: Class instance hasn't been created yet.');
+            die("Error: Class instance hasn't been created yet.");
         }
         return self::$instance;
     }
