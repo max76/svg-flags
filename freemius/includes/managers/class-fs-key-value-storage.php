@@ -299,7 +299,7 @@
 		}
 
 		#[\ReturnTypeWillChange]
-		function offsetSet( $k, $v ): void {
+		function offsetSet( $k, $v ) {
 			if ( is_null( $k ) ) {
 				throw new Exception( 'Can't append value to request params.' );
 			} else {
@@ -308,17 +308,17 @@
 		}
 
 		#[\ReturnTypeWillChange]
-		function offsetExists( $k ): bool {
+		function offsetExists( $k ) {
 			return array_key_exists( $k, $this->_data );
 		}
 
 		#[\ReturnTypeWillChange]
-		function offsetUnset( $k ): void {
+		function offsetUnset( $k ) {
 			unset( $this->$k );
 		}
 
 		#[\ReturnTypeWillChange]
-		function offsetGet( $k ): mixed {
+		function offsetGet( $k ) {
 			return $this->get( $k, null );
 		}
 
@@ -330,7 +330,7 @@
 		 * @return mixed Can return any type.
 		 */
 		#[\ReturnTypeWillChange]
-		public function current(): mixed {
+		public function current() {
 			return current( $this->_data );
 		}
 
@@ -342,7 +342,7 @@
 		 * @return void Any returned value is ignored.
 		 */
 		#[\ReturnTypeWillChange]
-		public function next(): void {
+		public function next() {
 			next( $this->_data );
 		}
 
@@ -354,7 +354,7 @@
 		 * @return mixed scalar on success, or null on failure.
 		 */
 		#[\ReturnTypeWillChange]
-		public function key(): mixed {
+		public function key() {
 			return key( $this->_data );
 		}
 
@@ -367,7 +367,7 @@
 		 *       Returns true on success or false on failure.
 		 */
 		#[\ReturnTypeWillChange]
-		public function valid(): bool {
+		public function valid() {
 			$key = key( $this->_data );
 
 			return ( $key !== null && $key !== false );
@@ -381,7 +381,7 @@
 		 * @return void Any returned value is ignored.
 		 */
 		#[\ReturnTypeWillChange]
-		public function rewind(): void {
+		public function rewind() {
 			reset( $this->_data );
 		}
 
@@ -396,7 +396,7 @@
 		 *       The return value is cast to an integer.
 		 */
 		#[\ReturnTypeWillChange]
-		public function count(): int {
+		public function count() {
 			return count( $this->_data );
 		}
 	}

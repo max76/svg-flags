@@ -50,7 +50,7 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'SVG_FLAGS_FREEMIUS_NAVIGATION', 'tabs' );
 // menu|tabs.
 
-add_action( 'init', function() {
+add_action( 'plugins_loaded', function() {
     if ( function_exists( __NAMESPACE__ . '\svg_flags_fs' ) ) {
         svg_flags_fs()->set_basename( false, __FILE__ );
     } else {
