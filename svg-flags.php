@@ -50,58 +50,60 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'SVG_FLAGS_FREEMIUS_NAVIGATION', 'tabs' );
 // menu|tabs.
 
-if ( function_exists( __NAMESPACE__ . '\\svg_flags_fs' ) ) {
-    svg_flags_fs()->set_basename( false, __FILE__ );
-} else {
-    
-    if ( !function_exists( __NAMESPACE__ . '\\svg_flags_fs' ) ) {
-        /**
-         * Create a helper function for easy SDK access.
-         */
-        function svg_flags_fs()
-        {
-            global  $svg_flags_fs ;
-            
-            if ( !isset( $svg_flags_fs ) ) {
-                // Include Freemius SDK.
-                include_once dirname( __FILE__ ) . '/freemius/start.php';
-                $svg_flags_fs = fs_dynamic_init( array(
-                    'id'             => '5235',
-                    'slug'           => 'svg-flags-lite',
-                    'premium_slug'   => 'svg-flags-premium',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_336fe1d95cd6f69e27f07834ef2a4',
-                    'is_premium'     => false,
-                    'navigation'     => SVG_FLAGS_FREEMIUS_NAVIGATION,
-                    'premium_suffix' => 'Pro',
-                    'has_addons'     => false,
-                    'has_paid_plans' => true,
-                    'menu'           => array(
-                    'slug'       => 'svg-flags-wpgoplugins',
-                    'first-path' => 'options-general.php?page=svg-flags-wpgoplugins-welcome',
-                    'parent'     => array(
-                    'slug' => 'options-general.php',
-                ),
-                ),
-                    'is_live'        => true,
-                ) );
+add_action( 'init', function() {
+    if ( function_exists( __NAMESPACE__ . '\svg_flags_fs' ) ) {
+        svg_flags_fs()->set_basename( false, __FILE__ );
+    } else {
+        
+        if ( !function_exists( __NAMESPACE__ . '\svg_flags_fs' ) ) {
+            /**
+             * Create a helper function for easy SDK access.
+             */
+            function svg_flags_fs()
+            {
+                global  $svg_flags_fs ;
+                
+                if ( !isset( $svg_flags_fs ) ) {
+                    // Include Freemius SDK.
+                    include_once dirname( __FILE__ ) . '/freemius/start.php';
+                    $svg_flags_fs = fs_dynamic_init( array(
+                        'id'             => '5235',
+                        'slug'           => 'svg-flags-lite',
+                        'premium_slug'   => 'svg-flags-premium',
+                        'type'           => 'plugin',
+                        'public_key'     => 'pk_336fe1d95cd6f69e27f07834ef2a4',
+                        'is_premium'     => false,
+                        'navigation'     => SVG_FLAGS_FREEMIUS_NAVIGATION,
+                        'premium_suffix' => 'Pro',
+                        'has_addons'     => false,
+                        'has_paid_plans' => true,
+                        'menu'           => array(
+                        'slug'       => 'svg-flags-wpgoplugins',
+                        'first-path' => 'options-general.php?page=svg-flags-wpgoplugins-welcome',
+                        'parent'     => array(
+                        'slug' => 'options-general.php',
+                    ),
+                    ),
+                        'is_live'        => true,
+                    ) );
+                }
+                
+                return $svg_flags_fs;
             }
             
-            return $svg_flags_fs;
+            // Init Freemius.
+            svg_flags_fs();
+            // Signal that SDK was initiated.
+            do_action( 'svg_flags_fs_loaded' );
         }
         
-        // Init Freemius.
-        svg_flags_fs();
-        // Signal that SDK was initiated.
-        do_action( 'svg_flags_fs_loaded' );
+        // Initialize plugin.
+        $module_roots = array(
+            'dir'  => plugin_dir_path( __FILE__ ),
+            'uri'  => plugins_url( '', __FILE__ ),
+            'file' => __FILE__,
+        );
+        require_once $module_roots['dir'] . 'classes/class-main.php';
+        Main::init( $module_roots );
     }
-    
-    // Initialize plugin.
-    $module_roots = array(
-        'dir'  => plugin_dir_path( __FILE__ ),
-        'uri'  => plugins_url( '', __FILE__ ),
-        'file' => __FILE__,
-    );
-    require_once $module_roots['dir'] . 'classes/class-main.php';
-    Main::init( $module_roots );
-}
+} );
