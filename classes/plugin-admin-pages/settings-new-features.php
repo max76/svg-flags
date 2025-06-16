@@ -6,6 +6,7 @@ namespace WPGO_Plugins\SVG_Flags;
  *    Plugin 'New Features' settings page
  */
 
+#[\AllowDynamicProperties]
 class New_Features_Settings
 {
 

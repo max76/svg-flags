@@ -6,6 +6,7 @@ namespace WPGO_Plugins\Plugin_Framework;
  *    Run upgrade routine(s) when plugin updated to new (higher) version
  */
 
+#[\AllowDynamicProperties]
 class Upgrade_FW {
 
 	protected $module_roots;

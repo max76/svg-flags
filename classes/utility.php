@@ -6,6 +6,7 @@ namespace WPGO_Plugins\SVG_Flags;
  *    Utility functions for SVG Flags
  */
 
+#[\AllowDynamicProperties]
 class Utility
 {
 

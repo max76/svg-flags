@@ -5,6 +5,7 @@ namespace WPGO_Plugins\SVG_Flags;
 /*
  *    Enqueue plugin scripts
  */
+#[\AllowDynamicProperties]
 class Enqueue_Scripts
 {
     // protected $module_roots;
@@ -62,7 +63,7 @@ class Enqueue_Scripts
         $admin_settings_js_ver = filemtime( $this->module_roots['dir'] . $admin_settings_js_rel );
         $opt_pfx = $this->custom_plugin_data->db_option_prefix;
         
-        if ( method_exists( '\\WPGO_Plugins\\Plugin_Framework\\Upgrade_FW', 'calc_new_features' ) ) {
+        if ( method_exists( '\WPGO_Plugins\Plugin_Framework\Upgrade_FW', 'calc_new_features' ) ) {
             $new_features_number = \WPGO_Plugins\Plugin_Framework\Upgrade_FW::calc_new_features( $opt_pfx, $this->new_features_arr, $this->plugin_data );
         } else {
             $new_features_number = 0;

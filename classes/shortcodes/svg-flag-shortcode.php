@@ -5,6 +5,7 @@ namespace WPGO_Plugins\SVG_Flags;
 /*
  *    Class for the [svg-flag] shortcode
  */
+#[\AllowDynamicProperties]
 class SVG_Flag_Shortcode
 {
 
@@ -22,8 +23,8 @@ class SVG_Flag_Shortcode
         add_shortcode('svg-flags', array(&$this, 'render_svg_flag_shortcode'));
         add_shortcode('svg-flag', array(&$this, 'render_svg_flag_shortcode'));
         // we can use static callbacks too if needed
-        //add_shortcode('svg-flags', array(__NAMESPACE__ . '\\SVG_Flag_Shortcode', 'render_svg_flag'));
-        //add_shortcode('svg-flag', array(__NAMESPACE__ . '\\SVG_Flag_Shortcode', 'render_svg_flag'));
+        //add_shortcode('svg-flags', array(__NAMESPACE__ . '\SVG_Flag_Shortcode', 'render_svg_flag'));
+        //add_shortcode('svg-flag', array(__NAMESPACE__ . '\SVG_Flag_Shortcode', 'render_svg_flag'));
     }
 
     public static function create_instance($module_roots, $custom_plugin_data)
@@ -37,7 +38,7 @@ class SVG_Flag_Shortcode
     public static function get_instance()
     {
         if (!self::$instance) {
-            die('Error: Class instance hasn\'t been created yet.');
+            die('Error: Class instance hasn't been created yet.');
         }
         return self::$instance;
     }

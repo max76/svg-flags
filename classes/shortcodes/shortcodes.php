@@ -5,6 +5,7 @@ namespace WPGO_Plugins\SVG_Flags;
 /**
  *  Bootstrap class for the free shortcodes
  */
+#[\AllowDynamicProperties]
 class Shortcodes {
 
 	protected $module_roots;

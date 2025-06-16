@@ -6,6 +6,7 @@ namespace WPGO_Plugins\SVG_Flags;
  *    Plugin 'Welcome' asettings page
  */
 
+#[\AllowDynamicProperties]
 class Welcome_Settings
 {
 

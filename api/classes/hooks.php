@@ -8,6 +8,7 @@ namespace WPGO_Plugins\Plugin_Framework;
  * 
  *  Update: It's not strictly necessary to remove free only code from the pro version via hooks but it keeps things cleaner. I've left in this file as an example of how to do it, but it's probably enough to just 'hide' free only code using if(flexible_faqs_fs()->can_use_premium_code()) { // free only code here } in the main code.
 */
+#[\AllowDynamicProperties]
 class Hooks_FW
 {
     protected  $module_roots ;

@@ -6,6 +6,7 @@ namespace WPGO_Plugins\Plugin_Framework;
  *    Enqueue plugin scripts
  */
 
+#[\AllowDynamicProperties]
 class Enqueue_Framework_Scripts {
 
 	/* Class constructor. */

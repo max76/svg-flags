@@ -6,6 +6,7 @@ namespace WPGO_Plugins\Plugin_Framework;
 *	WordPress plugin index page links and admin notices
 */
 
+#[\AllowDynamicProperties]
 class Plugin_Links_FW {
 	
 	protected $module_roots;
