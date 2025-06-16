@@ -301,7 +301,7 @@
 		#[\ReturnTypeWillChange]
 		function offsetSet( $k, $v ) {
 			if ( is_null( $k ) ) {
-				throw new Exception( 'Can't append value to request params.' );
+				throw new Exception( "Can't append value to request params." );
 			} else {
 				$this->{$k} = $v;
 			}
